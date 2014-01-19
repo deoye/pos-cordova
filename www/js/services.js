@@ -23,4 +23,25 @@ angular.module('starter.services', [])
       return pets[petId];
     }
   }
+})
+
+.factory('ComandaService', function() {
+  // Might use a resource here that returns a JSON array
+  // Some fake testing data
+  var comandas = [
+    { id: 0, name: 'João Pedro', products: [ {id: 0, name: 'Heineken 600ml', count: 0}, {id: 1, name: 'Ypioca Ouro Dose', count: 0} ] },
+    { id: 1, name: 'Pedro José', products: [ {id: 0, name: 'Heineken 600ml', count: 0} ] },
+    { id: 2, name: 'Luiz Inácio', products: [ {id: 0, name: 'Heineken 600ml', count: 0} ] },
+    { id: 3, name: 'Garrincha Futebol', products: [ {id: 0, name: 'Heineken 600ml', count: 0} ] },
+  ];
+
+  return {
+    all: function() {
+      return comandas;
+    },
+    get: function(comandaId) {
+      // Simple index lookup
+      return comandas[comandaId];
+    }
+  }
 });

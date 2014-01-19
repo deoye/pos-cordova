@@ -1,0 +1,42 @@
+<!--
+  This template gets placed in the Pet tab's <nav-view> directive.
+  It was wired up in the app config (app.js)
+  The 'pets' data comes from its $scope within PetIndexCtrl (controller.js)
+-->
+<view title="'Menu'">
+  <content has-header="true" has-tabs="true">
+
+    <form ng-submit="submit()" ng-controller="ComandaFinderCtrl">
+
+      <div class="card">
+        <div class="item item-divider">
+          Informe o número da comanda abaixo
+        </div>
+        <div class="item item-text-wrap">
+          <div class="list">
+            <label class="item item-input">
+              <input type="text" ng-model="comandaNumber" placeholder="Comanda" />
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="item item-divider">
+          {{comanda.name}}
+        </div>
+        <div class="item row" ng-repeat="product in comanda.products">
+          <div class="col-75">
+            {{product.name}} - <strong>qtd</strong> {{product.count}}
+          </div>
+          <div class="col">
+            <button class="button button-dark" ng-click="addOne({{product.id}})" ng-controller="ComandaFinderCtrl">+1</button>
+          </div>
+        </div>
+
+      </div>
+
+    </form>
+
+  </content>
+</view>
