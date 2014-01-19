@@ -1,5 +1,7 @@
 /*global module:false*/
 module.exports = function(grunt) {
+  // Load Grunt tasks declared in the package.json file
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   // Project configuration.
   grunt.initConfig({
@@ -13,52 +15,47 @@ module.exports = function(grunt) {
       '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
       'João Netto; Licensed MIT */\n',
     // Task configuration.
-    jshint: {
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        unused: true,
-        boss: true,
-        eqnull: true,
-        browser: true,
-        globals: {
-          jQuery: true
+    // grunt-express will serve the files from the folders listed in `bases`
+    // on specified `port` and `hostname`
+    express: {
+      all: {
+        options: {
+          port: 9000,
+          hostname: "0.0.0.0",
+          bases: ['www'],
+          livereload: true
         }
-      },
-      gruntfile: {
-        src: 'Gruntfile.js'
       }
     },
+
+    // grunt-open will open your browser at the project's URL
+    open: {
+      all: {
+        // Gets the port from the connect configuration
+        path: 'http://localhost:<%= express.all.options.port%>'
+      }
+    },
+
+    // grunt-watch will monitor the projects files
     watch: {
-      gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint:gruntfile']
-      }
-    },
-    'http-server': {
-      dev: {
-        root: 'www/',
-        port: 8282,
-        host: "127.0.0.1",
-        showDir : true,
-        autoIndex: true,
-        defaultExt: "html",
-        runInBackground: false
+      all: {
+        // You can use globing patterns like `css/**/*.css`
+        // See https://github.com/gruntjs/grunt-contrib-watch#files
+        files: ['www/*', 'www/*/*'],
+        options: {
+          livereload: true
+        }
       }
     }
   });
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-http-server');
+  // Creates the `server` task
+  grunt.registerTask('server', [
+    'express',
+    'open',
+    'watch'
+  ]);
 
   // Default task.
-  grunt.registerTask('default', ['http-server']);
-
+  grunt.registerTask('default', []);
 };

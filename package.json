@@ -15,6 +15,9 @@
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.2",
-    "grunt-http-server": "0.0.4"
+    "grunt-contrib-watch": "~0.5.1",
+    "matchdep": "~0.1.2",
+    "grunt-express": "~1.0.1",
+    "grunt-open": "~0.2.3"
   }
 }
