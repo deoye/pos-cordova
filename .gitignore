@@ -3,3 +3,5 @@ build
 !*.xcodeproj/project.pbxproj
 !*.xcworkspace/contents.xcworkspacedata
 platforms/ios/cordova/console.log
+platforms/ios/www
+.DS_Store
