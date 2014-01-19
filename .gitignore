@@ -5,3 +5,4 @@ build
 platforms/ios/cordova/console.log
 platforms/ios/www
 .DS_Store
+node_modules/

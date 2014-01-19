@@ -1,0 +1,20 @@
+{
+  "name": "pos-ios",
+  "description": "pos for ios devices using ionic framework and angular",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jnettome/pos-cordova",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jnettome/pos-cordova.git"
+  },
+  "author": {
+    "name": "João Netto",
+    "email": "hi@joaonetto.me",
+    "url": "http://joaonetto.me"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-http-server": "0.0.4"
+  }
+}
